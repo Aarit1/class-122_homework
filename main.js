@@ -30,8 +30,8 @@ function start()
 recognition.onresult = function(event) {
 
  console.log(event); 
- to_number = Number(content);
  content = event.results[0][0].transcript;
+ to_number = Number(content);
  document.getElementById("status").innerHTML = "The speech has been recognized: " + content;
  
  if(Number.isInteger(to_number))
@@ -47,7 +47,7 @@ recognition.onresult = function(event) {
 function setup() {
   screen_width = window.innerWidth;
   screen_height = window.innerHeight;
-  createCanvas(screen_width, screen_height-150);
+  canvas= createCanvas(screen_width, screen_height-150);
   canvas.position(0,150);
 }
 
@@ -61,7 +61,7 @@ function draw() {
       }
 
     document.getElementById("status").innerHTML = to_number + " Apples drawn";
-    speak_data = "to_number";
+    speak_data = to_number;
     speak();
     draw_apple = "";
 
@@ -78,3 +78,4 @@ function speak(){
 
     speak_data = "";
 }
+
